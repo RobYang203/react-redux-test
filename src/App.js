@@ -1,26 +1,40 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 
-function App() {
+function App({string , changeString}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="App">
+        Hello {string}
+      </div>
+    <button onClick={()=>{changeString("Redux")}}>click Redux</button>
+    <button onClick={()=>{changeString("World")}}>click World</button>
     </div>
+  
   );
 }
 
-export default App;
+
+const mapStateToProps = (state)=>{
+  
+  return {
+    string:state.hello
+  }
+};
+const mapDispatchToProps = (dispatch)=>{
+  return {
+    changeString : (string)=> {dispatch(actionCreator(string))}
+  }
+};
+const actionCreator = (string)=>{
+  return {
+    type:"string",
+    payload:string
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

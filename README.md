@@ -22,3 +22,6 @@
 2. 把 dispatch 的 actionCreator 送入 reducer
 3. reducer 根據 action，做出動作，回傳`Redux State`
 4. 觸發 mapStateToProps 調整格式送入 指定 Component，出發 `props render`
+
+
+## Test Fork by TonyYang203
